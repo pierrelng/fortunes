@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Fortunes{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/styles2.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+
+	    <div class="col-md-3"></div>
+
+	    <div class="col-md-6 topRatedCol">
+	        <h1 class="topRatedTitle">Fortunes By {{ authorEntities[0].author }}</h1>
+	        {% for item in authorEntities %}
+	            {{ include('default/fortune.html.twig') }}
+	        {% endfor %}
+	    </div>
+
+	    <div class="col-md-3"></div>
+
+	</div>
+</div>
+{% endblock %}

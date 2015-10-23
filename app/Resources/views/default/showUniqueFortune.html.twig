@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Fortunes{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/styles2.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="container uniqueFortune">
+	<div class="row">
+
+	    <div class="col-md-3"></div>
+
+	    <div class="col-md-6 uniqueFortune">
+	            {{ include('default/fortune.html.twig') }}
+	        {% for comment in item.comments %}
+	        	<p>{{ comment.author }}</p>
+	        	<p>{{ comment.content }}</p>
+	        	<p>{{ comment.createdAt|date('d/m/Y') }}</p>
+	        {% endfor %}
+	    </div>
+
+	    <div class="col-md-3"></div>
+
+	</div>
+
+	<div class="row">
+
+	    <div class="col-md-3"></div>
+
+	    <div class="col-md-6 uniqueFortune">
+	    	<p>{{ item.id }}</p>
+	        <form action="{{ path('uniqueFortune', {id: item.id}) }}" method="POST" novalidate>
+				{# {{ form_widget(form) }} #} {# Formulaire avec CSS générique #}
+				{{form_row(form.author, {'attr': {class:"form-control"}})}}
+				{{form_row(form.content, {'attr': {class:"form-control"}})}}
+				{{form_row(form.submit, {'attr': {class:"btn btn-default"}})}}
+				{{form_rest(form)}}
+	        </form>
+	    </div>
+
+	    <div class="col-md-3"></div>
+
+	</div>
+</div>
+{% endblock %}

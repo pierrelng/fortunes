@@ -1,0 +1,10 @@
+<div class="card topRated">
+    <div class="content">
+        <p class="quote">{{ item.content }}</p>
+        <p><em>—   <a href="{{ path('byAuthor', {author: item.author}) }}">{{ item.author }}</a></em></p>
+        <div class="vote">
+            <a href="{{ path('upvote', {id: item.id}) }}" class="upvote">Upvote</a> <span class="num">({{ item.upVote }})</span>
+            <a href="{{ path('downvote', {id: item.id}) }}" class="downvote">Downvote</a> <span class="num">({{ item.downVote }})</span>
+        </div>
+    </div>
+</div>

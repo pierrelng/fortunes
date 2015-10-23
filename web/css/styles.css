@@ -1,0 +1,82 @@
+body {
+	font-family: 'Lato', sans-serif;
+}
+
+.title, .topRatedTitle {
+	margin: 70px 0 80px 0;
+	text-align: center;
+	font-family: 'Pacifico', cursive;
+	font-size: 66px;
+}
+
+	.topRatedTitle {
+		margin: 40px 0 70px 0;
+		font-family: 'Lato', sans-serif;
+		font-size: 46px;
+	}
+
+.card {
+	margin: 0 0 0 0;
+	font-family: 'Merriweather', serif;
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 28px;
+	color: #474747;
+	margin-bottom: 70px;
+}
+
+.quote {
+	text-align: justify;
+}
+
+.vote {
+	text-align: right;
+	font-family: 'Lato', sans-serif;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+	.upvote {
+		color: #00C200;
+	}
+
+	.downvote {
+		color: #DC3A3A;
+	}
+
+.topRatedCol {
+	box-shadow: 0 0px 2px rgba(0,0,0,0.15),0 0 1px rgba(0,0,0,0.15);
+	border-radius: 3px;
+	padding: 0 25px;
+}
+
+.card.topRated {
+
+}
+
+.container.uniqueFortune {
+	margin-top: 150px;
+	margin-bottom: 80px;
+}
+
+.separator {
+	text-align: center;
+	margin: 30px auto;
+}
+
+	.line {
+		/*display: inline-block;*/
+		/*width: 50px;*/ height: 1px;
+		background-color: rgba(0,0,0,0.1);
+		margin: auto;
+		/*vertical-align: middle;*/
+	}
+
+	.dot {
+		display: inline-block;
+		width: 10px; height: 10px;
+		margin: auto 15px;
+		background-color: rgba(0,0,0,0.1);
+		border-radius: 45px;
+		vertical-align:middle;
+	}

@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Fortunes{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        <div class="container-cards col-md-3"></div>
+
+        <div class="container-cards col-md-6">
+            <h1 class="title">Fortunes</h1>
+            {% for item in entities %}
+                {{ include('default/fortune.html.twig') }}
+                <div class="separator">
+                    {# <div class="line"></div> #}
+                    {# <div class="dot"></div> #}
+                    {# <div class="line"></div> #}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="container-cards col-md-3">{{ pagerfanta(entities, 'twitter_bootstrap3') }}</div>
+
+    </div>
+</div>
+{% endblock %}
