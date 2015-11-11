@@ -80,3 +80,11 @@ body {
 		border-radius: 45px;
 		vertical-align:middle;
 	}
+
+.containerPagination {
+	text-align: center;
+}
+
+.mainBody {
+	margin-bottom: 50px;
+}

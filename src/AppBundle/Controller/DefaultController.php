@@ -23,7 +23,7 @@ class DefaultController extends Controller
         $entities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findLast();
 
         $pagedEntities = new Pagerfanta($entities);
-        $pagedEntities->setMaxPerPage(1); // 10 by default
+        $pagedEntities->setMaxPerPage(5); // 10 by default
         $pagedEntities->setCurrentPage($request->get("page", 1));
 
         return $this->render('default/index.html.twig', array(
