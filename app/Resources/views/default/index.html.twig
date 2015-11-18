@@ -16,11 +16,6 @@
             <h1 class="title">Fortunes</h1>
             {% for item in entities %}
                 {{ include('default/fortune.html.twig') }}
-                <div class="separator">
-                    {# <div class="line"></div> #}
-                    {# <div class="dot"></div> #}
-                    {# <div class="line"></div> #}
-                </div>
             {% endfor %}
             <div class="containerPagination">{{ pagerfanta(entities, 'twitter_bootstrap3') }}</div>
         </div>

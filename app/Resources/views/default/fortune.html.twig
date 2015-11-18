@@ -1,10 +1,11 @@
-<div class="card topRated">
+<div class="card">
     <div class="content">
         <p class="quote">{{ item.content }}</p>
         <p><em>—   <a href="{{ path('byAuthor', {author: item.author}) }}">{{ item.author }}</a></em></p>
         <div class="vote">
-            <a href="{{ path('upvote', {id: item.id}) }}" class="upvote">Upvote</a> <span class="num">({{ item.upVote }})</span>
-            <a href="{{ path('downvote', {id: item.id}) }}" class="downvote">Downvote</a> <span class="num">({{ item.downVote }})</span>
+            <a href="{{ path('upvote', {id: item.id}) }}" class="upvote">Up</a> <span class="num">({{ item.upVote }})</span>
+            <a href="{{ path('downvote', {id: item.id}) }}" class="downvote">Down</a> <span class="num">({{ item.downVote }})</span>
+            <a href="{{ path('uniqueFortune', {id: item.id}) }}" class="comment">Comment</a> <span class="num">({{ item.downVote }})</span>
         </div>
     </div>
 </div>
