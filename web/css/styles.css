@@ -2,8 +2,11 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 
-.title, .topRatedTitle {
+.header {
 	margin: 70px 0 60px 0;
+}
+
+.title, .topRatedTitle {
 	text-align: center;
 	font-family: 'Pacifico', cursive;
 	font-size: 66px;
@@ -13,6 +16,31 @@ body {
 		margin: 40px 0 40px 0;
 		font-family: 'Lato', sans-serif;
 		font-size: 46px;
+	}
+
+	.titleLink, .titleLink:hover, .titleLink:visited, .titleLink:focus, .titleLink:active {
+		color: #333333;
+		text-decoration: none;
+	}
+
+.submenu {
+	text-align: center;
+	width: 143px;
+    margin: auto;
+    padding-left: 13px;
+}
+
+	.submenu a {
+		color: rgba(51, 51, 51, 0.45);
+	}
+
+	.submenu span {
+		color: #333333;
+	}
+
+	.submenu a:hover, .submenu a:focus {
+		color: #333333;
+		text-decoration: none;
 	}
 
 .card {

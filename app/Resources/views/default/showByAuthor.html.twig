@@ -13,13 +13,13 @@
 	    <div class="col-md-3"></div>
 
 	    <div class="col-md-6">
-	    	<h1 class="title">Fortunes</h1>
-	    <div class="topRatedCol">
-	        <h1 class="topRatedTitle">Fortunes By {{ authorEntities[0].author }}</h1>
-	        {% for item in authorEntities %}
-	            {{ include('default/fortune.html.twig') }}
-	        {% endfor %}
-	    </div>
+	        {{ include('default/header.html.twig') }}
+		    <div class="topRatedCol">
+		        <h1 class="topRatedTitle">Fortunes By {{ authorEntities[0].author }}</h1>
+		        {% for item in authorEntities %}
+		            {{ include('default/fortune.html.twig') }}
+		        {% endfor %}
+		    </div>
 	    </div>
 
 	    <div class="col-md-3"></div>
