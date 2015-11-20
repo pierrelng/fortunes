@@ -1,11 +1,29 @@
 <div class="card">
-    <div class="content">
-        <p class="quote">{{ item.content }}</p>
-        <p><em>—   <a href="{{ path('byAuthor', {author: item.author}) }}">{{ item.author }}</a></em></p>
-        <div class="vote">
-            <a href="{{ path('upvote', {id: item.id}) }}" class="upvote">Up</a> <span class="num">({{ item.upVote }})</span>
-            <a href="{{ path('downvote', {id: item.id}) }}" class="downvote">Down</a> <span class="num">({{ item.downVote }})</span>
-            <a href="{{ path('uniqueFortune', {id: item.id}) }}" class="comment">Comment</a> <span class="num">({{ item.downVote }})</span>
+
+    <div class="vote">
+		<div class="upvoteContainer">
+            <a href="{{ path('upvote', {id: item.id}) }}" class="upvote">
+            	<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+            	<span class="num">{{ item.upVote }}</span>
+            </a>
+        </div>
+		<div class="downvoteContainer">
+            <a href="{{ path('downvote', {id: item.id}) }}" class="downvote">
+            	<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+            	<span class="num">{{ item.downVote }}</span>
+            </a>
         </div>
     </div>
+
+    <div class="content">
+        <p class="quote">{{ item.content }}</p>
+        <p class="author">
+        	—
+        	<a href="{{ path('byAuthor', {author: item.author}) }}">{{ item.author }}</a>
+        	<a href="{{ path('editFortune', {id: item.id}) }}" class="more"> Edit</a>
+        	<span class="more">|</span>
+        	<a href="{{ path('uniqueFortune', {id: item.id}) }}" class="more">Comments </a>
+        </p>
+    </div>
+
 </div>

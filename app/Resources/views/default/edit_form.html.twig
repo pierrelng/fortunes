@@ -14,8 +14,8 @@
 
 	    <div class="container-cards col-md-6">
 	        {{ include('default/header.html.twig') }}
-	    	<h2>Create a new Fortune</h2>
-	        <form action="{{ path('createFortune') }}" method="POST" novalidate class="form">
+	    	<h2>Edit this Fortune</h2>
+	        <form action="{{ path('editFortune', {id: item.id}) }}" method="POST" novalidate class="form">
 				{# {{ form_widget(form) }} #} {# This line renders the complete form with the default CSS, for an easier use #}
 				{{form_row(form.title, {'attr': {class:"form-control"}})}}
 				{{form_row(form.author, {'attr': {class:"form-control"}})}}

@@ -117,6 +117,39 @@ class DefaultController extends Controller
     }
 
     /**
+     * Edit a Fortune entity.
+     * Creates a new Fortune entity.
+     *
+     * @Route("/fortune/{id}/edit", name="editFortune")
+     */
+    public function editAction($id, Request $request)
+    {
+        $uniqueEntity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
+
+        if (!$uniqueEntity) {
+            throw $this->createNotFoundException('Unable to find Fortune.');
+        }
+
+        // Create form.
+        $form = $this->createForm(new FortuneType, $uniqueEntity);
+        
+        // Create entity.
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $uniqueEntity = $form->getData();
+            $em->flush();
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('default/edit_form.html.twig', array(
+            'item' => $uniqueEntity,
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
      * @Route("/fortune/{id}", name="uniqueFortune")
      */
     public function showUniqueFortuneAction($id, Request $request)

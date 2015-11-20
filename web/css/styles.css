@@ -56,20 +56,64 @@ body {
 	text-align: justify;
 }
 
-.vote, .comment {
-	text-align: right;
-	font-family: 'Lato', sans-serif;
-	text-transform: uppercase;
-	font-size: 14px;
+.content {
+	overflow: hidden;
+	padding-top: 2px;
 }
 
-	.upvote {
-		color: #00C200;
+	.author {
+		font-style: italic;
 	}
 
-	.downvote {
-		color: #DC3A3A;
+	.more {
+		float: right;
+		font-family: 'Lato', sans-serif;
+		font-style: normal;
+		text-transform: uppercase;
+		font-size: 13px;
+		color: rgba(51, 51, 51, 0.45);
 	}
+
+	.more:hover, .more:focus {
+		color: #333333;
+	}
+
+	.author span {
+		padding: 0px 5px;
+	}
+
+.vote {
+	float: left;
+	overflow: hidden;
+	font-family: 'Lato', sans-serif;
+	text-transform: uppercase;
+	font-size: 13px;
+	margin-right: 15px;
+}
+
+	.upvoteContainer {
+		height: 20px;
+	}
+
+		.upvote {
+			color: #00C200;
+		}
+
+			.glyphicon-arrow-up {
+				font-size: 11px;
+			}
+
+	.downvoteContainer {
+		height: 20px;
+	}
+
+		.downvote {
+			color: #DC3A3A;
+		}
+
+			.glyphicon-arrow-down {
+				font-size: 11px;
+			}
 
 .topRatedCol {
 	box-shadow: 0 0px 2px rgba(0,0,0,0.15),0 0 1px rgba(0,0,0,0.15);
@@ -90,4 +134,8 @@ body {
 
 .mainBody {
 	margin-bottom: 50px;
+}
+
+.form {
+	margin: 20px 0 50px 0;
 }
