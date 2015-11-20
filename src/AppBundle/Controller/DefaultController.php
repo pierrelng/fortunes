@@ -20,7 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $entities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findLast();
+        $entities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findLastPublished();
 
         $pagedEntities = new Pagerfanta($entities);
         $pagedEntities->setMaxPerPage(5); // 10 by default
@@ -202,8 +202,52 @@ class DefaultController extends Controller
             'unpublishedEntities' => $unpublishedEntities,
         ));
     }
+
+    /**
+     * No route needed, displayed on every page.
+     */
+    public function headerAction()
+    {
+        $nbUnpublishedEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->countUnpublished();
+
+        return $this->render('default/_header.html.twig', array(
+            'nbUnpublishedEntities' => $nbUnpublishedEntities,
+        ));
+    }
+
+    /**
+     * @Route("/moderate/publish/{id}", name="publish")
+     */
+    public function publishAction($id)
+    {
+        $unpublishedEntity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
+
+        if (!$unpublishedEntity) {
+            throw $this->createNotFoundException('Unable to find Fortune.');
+        }
+
+        $unpublishedEntity->setPublished();
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('moderate');
+    }
+
+    /**
+     * @Route("/moderate/delete/{id}", name="delete")
+     */
+    public function deleteAction($id)
+    {
+        $unpublishedEntity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
+
+        if (!$unpublishedEntity) {
+            throw $this->createNotFoundException('Unable to find Fortune.');
+        }
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($unpublishedEntity);
+        $em->flush();
+
+        return $this->redirectToRoute('moderate');
+    }
 }
 
-// $this->get('session')->has('key');
-// $this->get('session')->set('key', 'value');
-// $this->get('session')->get('key', 'default');

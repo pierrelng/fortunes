@@ -13,11 +13,23 @@
 	    <div class="col-md-3"></div>
 
 	    <div class="col-md-6">
-	        {{ include('default/header.html.twig') }}
-		    <div class="topRatedCol">
+		    <div class="topRatedCol moderateCol">
 		        <h1 class="topRatedTitle">Unpublished Fortunes</h1>
 		        {% for item in unpublishedEntities %}
-		            {{ include('default/fortune.html.twig') }}
+		            <div class="card">
+					    <div class="content">
+					        <p class="quote">{{ item.content }}</p>
+					        <p class="author">
+					        	—
+					        	<a href="{{ path('byAuthor', {author: item.author}) }}">{{ item.author }}</a>
+		            			<a href="{{ path('delete', {id: item.id}) }}" class="more delete">Delete</a>
+					        	<span class="more">|</span>
+					        	<a href="{{ path('editFortune', {id: item.id}) }}" class="more">Edit</a>
+					        	<span class="more">|</span>
+		            			<a href="{{ path('publish', {id: item.id}) }}" class="more publish">Publish</a>
+					        </p>
+					    </div>
+		            </div>
 		        {% endfor %}
 		    </div>
 	    </div>

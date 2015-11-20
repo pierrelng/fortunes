@@ -13,7 +13,6 @@
 	    <div class="container-cards col-md-3"></div>
 
 	    <div class="container-cards col-md-6">
-	        {{ include('default/header.html.twig') }}
 	    	<h2>Edit this Fortune</h2>
 	        <form action="{{ path('editFortune', {id: item.id}) }}" method="POST" novalidate class="form">
 				{# {{ form_widget(form) }} #} {# This line renders the complete form with the default CSS, for an easier use #}

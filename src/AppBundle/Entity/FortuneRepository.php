@@ -15,9 +15,9 @@ class FortuneRepository extends \Doctrine\ORM\EntityRepository
      *
      * @return Fortune[]
      */
-    public function findLast()
+    public function findLastPublished()
     {
-        $queryBuilder = $this->createQueryBuilder('F')->orderBy('F.createdAt', 'DESC'); // 'F' is an alias
+        $queryBuilder = $this->createQueryBuilder('F')->where('F.published = true')->orderBy('F.createdAt', 'DESC'); // 'F' is an alias
         return new DoctrineORMAdapter($queryBuilder);
     }
 
@@ -48,7 +48,17 @@ class FortuneRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findUnpublished()
     {
-        return $this->createQueryBuilder('F')->where('F.published = false')->getQuery()->getResult(); // 'F' is an alias
+        return $this->createQueryBuilder('F')->where('F.published = false')->orderBy('F.createdAt', 'DESC')->getQuery()->getResult(); // 'F' is an alias
+    }
+
+    /**
+     * Count unpublished items
+     *
+     * @return Fortune[]
+     */
+    public function countUnpublished()
+    {
+        return $this->createQueryBuilder('F')->select('COUNT(F)')->where('F.published = false')->orderBy('F.createdAt', 'DESC')->getQuery()->getSingleScalarResult(); // 'F' is an alias
     }
 
 }

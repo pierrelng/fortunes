@@ -11,6 +11,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        {{render(controller("AppBundle:Default:header"))}}
         {% block body %}{% endblock %}
         {{render(controller("AppBundle:Default:showBestRated"))}}
         {% block javascripts %}{% endblock %}
