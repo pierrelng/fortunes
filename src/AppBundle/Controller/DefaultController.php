@@ -182,7 +182,7 @@ class DefaultController extends Controller
 
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('uniqueFortune', array('id' => $id));
         }
 
         return $this->render('default/showUniqueFortune.html.twig', array(

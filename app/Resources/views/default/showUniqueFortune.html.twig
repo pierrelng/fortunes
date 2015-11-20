@@ -7,16 +7,19 @@
 {% endblock %}
 
 {% block body %}
-<div class="container uniqueFortune">
+<div class="container">
 	<div class="row">
 
 	    <div class="col-md-3"></div>
 
 	    <div class="col-md-6 uniqueFortune">
+	    	{{ include('default/fortune.html.twig') }}
 	        {% for comment in item.comments %}
-	        	<p>{{ comment.author }}</p>
-	        	<p>{{ comment.content }}</p>
-	        	<p>{{ comment.createdAt|date('d/m/Y') }}</p>
+	        	<div class="comment">
+		        	<p class="commentDate">{{ comment.createdAt|date('F jS, Y') }}</p>
+		        	<p class="commentAuthor">{{ comment.author }}</p>
+		        	<p class="commentContent">{{ comment.content }}</p>
+	        	</div>
 	        {% endfor %}
 	    </div>
 
@@ -28,14 +31,14 @@
 
 	    <div class="col-md-3"></div>
 
-	    <div class="col-md-6 uniqueFortune">
-	    	<p>Comment</p>
-	        <form action="{{ path('uniqueFortune', {id: item.id}) }}" method="POST" novalidate>
+	    <div class="container-cards col-md-6">
+	    	<h2>Comment</h2>
+	        <form action="{{ path('uniqueFortune', {id: item.id}) }}" method="POST" novalidate class="form">
 				{# {{ form_widget(form) }} #} {# Formulaire avec CSS générique #}
-				{{form_row(form.author, {'attr': {class:"form-control"}})}}
-				{{form_row(form.content, {'attr': {class:"form-control"}})}}
-				{{form_row(form.submit, {'attr': {class:"btn btn-default"}})}}
-				{{form_rest(form)}}
+				{{ form_row(form.author, {'attr': {class:"form-control formItem"}}) }}
+				{{ form_row(form.content, {'attr': {class:"form-control formItem"}}) }}
+				{{ form_row(form.submit, {'attr': {class:"btn btn-default formItem"}}) }}
+				{{ form_rest(form) }}
 	        </form>
 	    </div>
 

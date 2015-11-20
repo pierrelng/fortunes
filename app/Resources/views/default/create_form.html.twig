@@ -16,11 +16,11 @@
 	    	<h2>Create a new Fortune</h2>
 	        <form action="{{ path('createFortune') }}" method="POST" novalidate class="form">
 				{# {{ form_widget(form) }} #} {# This line renders the complete form with the default CSS, for an easier use #}
-				{{form_row(form.title, {'attr': {class:"form-control"}})}}
-				{{form_row(form.author, {'attr': {class:"form-control"}})}}
-				{{form_row(form.content, {'attr': {class:"form-control"}})}}
-				{{form_row(form.submit, {'attr': {class:"btn btn-default"}})}}
-				{{form_rest(form)}}
+				{{ form_row(form.title, {'attr': {class:"form-control formItem"}}) }}
+				{{ form_row(form.author, {'attr': {class:"form-control formItem"}}) }}
+				{{ form_row(form.content, {'attr': {class:"form-control formItem"}}) }}
+				{{ form_row(form.submit, {'attr': {class:"btn btn-default formItem"}}) }}
+				{{ form_rest(form) }}
 	        </form>
 	    </div>
 
