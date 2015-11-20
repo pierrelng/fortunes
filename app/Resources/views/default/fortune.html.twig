@@ -2,13 +2,21 @@
 
     <div class="vote">
 		<div class="upvoteContainer">
+			{% if app.session.get("upvotedId_#{item.id}") == 'value' %}
+            <a href="{{ path('upvote', {id: item.id}) }}" class="upvoted">
+            {% else %}
             <a href="{{ path('upvote', {id: item.id}) }}" class="upvote">
+            {% endif %}
             	<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
             	<span class="num">{{ item.upVote }}</span>
             </a>
         </div>
 		<div class="downvoteContainer">
+			{% if app.session.get("downvotedId_#{item.id}") == 'value' %}
+            <a href="{{ path('downvote', {id: item.id}) }}" class="downvoted">
+            {% else %}
             <a href="{{ path('downvote', {id: item.id}) }}" class="downvote">
+            {% endif %}
             	<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
             	<span class="num">{{ item.downVote }}</span>
             </a>

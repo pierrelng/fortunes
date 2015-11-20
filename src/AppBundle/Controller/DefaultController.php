@@ -42,11 +42,11 @@ class DefaultController extends Controller
             throw $this->createNotFoundException();
         }
 
-        if ($this->get('session')->has('votedId_'.$id)) {
+        if ($this->get('session')->has('upvotedId_'.$id)) {
             return $this->redirectToRoute('homepage');
         }
 
-        $this->get('session')->set('votedId_'.$id, 'value');
+        $this->get('session')->set('upvotedId_'.$id, 'value');
 
         $entity->voteUp();
         $this->getDoctrine()->getManager()->flush();
@@ -60,6 +60,17 @@ class DefaultController extends Controller
     public function downVoteAction($id)
     {
         $entity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
+
+        if ($entity === null) {
+            throw $this->createNotFoundException();
+        }
+
+        if ($this->get('session')->has('downvotedId_'.$id)) {
+            return $this->redirectToRoute('homepage');
+        }
+
+        $this->get('session')->set('downvotedId_'.$id, 'value');
+
         $entity->voteDown();
         $this->getDoctrine()->getManager()->flush();
 

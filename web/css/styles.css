@@ -99,6 +99,10 @@ body {
 			color: #00C200;
 		}
 
+		.upvoted {
+			color: rgba(51, 51, 51, 0.25);
+		}
+
 			.glyphicon-arrow-up {
 				font-size: 11px;
 			}
@@ -109,6 +113,10 @@ body {
 
 		.downvote {
 			color: #DC3A3A;
+		}
+
+		.downvoted {
+			color: rgba(51, 51, 51, 0.25);
 		}
 
 			.glyphicon-arrow-down {
