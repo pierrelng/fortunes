@@ -74,6 +74,13 @@ class Fortune
     private $comments;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
+
+    /**
      * Setting default values.
      *
      * @return integer
@@ -83,6 +90,7 @@ class Fortune
         $this->upVote = 0;
         $this->downVote = 0;
         $this->createdAt = new \DateTime();
+        $this->published = false;
     }
 
     /**
@@ -243,6 +251,18 @@ class Fortune
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set published state
+     *
+     * @return Fortune
+     */
+    public function setPublished()
+    {
+        $this->published = true;
+
+        return $this;
     }
 
 }

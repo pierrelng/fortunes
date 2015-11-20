@@ -128,8 +128,8 @@ class DefaultController extends Controller
     }
 
     /**
-     * Edit a Fortune entity.
-     * Creates a new Fortune entity.
+     * Displays edit form.
+     * Edits a Fortune entity.
      *
      * @Route("/fortune/{id}/edit", name="editFortune")
      */
@@ -188,6 +188,18 @@ class DefaultController extends Controller
         return $this->render('default/showUniqueFortune.html.twig', array(
             'item' => $uniqueEntity,
             'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/moderate", name="moderate")
+     */
+    public function showUnpublishedAction()
+    {
+        $unpublishedEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findUnpublished();
+
+        return $this->render('default/moderate.html.twig', array(
+            'unpublishedEntities' => $unpublishedEntities,
         ));
     }
 }

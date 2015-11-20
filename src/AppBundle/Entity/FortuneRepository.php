@@ -41,5 +41,15 @@ class FortuneRepository extends \Doctrine\ORM\EntityRepository
         return $this->createQueryBuilder('F')->where('F.author = :author')->setParameter("author", $author)->getQuery()->getResult(); // 'F' is an alias
     }
 
+    /**
+     * Get unpublished items
+     *
+     * @return Fortune[]
+     */
+    public function findUnpublished()
+    {
+        return $this->createQueryBuilder('F')->where('F.published = false')->getQuery()->getResult(); // 'F' is an alias
+    }
+
 }
 
