@@ -83,7 +83,6 @@ class Fortune
     /**
      * Setting default values.
      *
-     * @return integer
      */
     public function __construct()
     {
@@ -94,7 +93,7 @@ class Fortune
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
@@ -104,7 +103,7 @@ class Fortune
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      *
@@ -118,7 +117,7 @@ class Fortune
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -128,7 +127,7 @@ class Fortune
     }
 
     /**
-     * Set author
+     * Set author.
      *
      * @param string $author
      *
@@ -142,7 +141,7 @@ class Fortune
     }
 
     /**
-     * Get author
+     * Get author.
      *
      * @return string
      */
@@ -152,7 +151,7 @@ class Fortune
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $content
      *
@@ -166,7 +165,7 @@ class Fortune
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -176,7 +175,7 @@ class Fortune
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
      *
@@ -190,7 +189,7 @@ class Fortune
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -200,7 +199,7 @@ class Fortune
     }
 
     /**
-     * Get upvote
+     * Get upvotes.
      *
      * @return integer
      */
@@ -210,7 +209,7 @@ class Fortune
     }
 
     /**
-     * Upvote
+     * Upvote.
      *
      * @return Fortune
      */
@@ -222,7 +221,7 @@ class Fortune
     }
 
     /**
-     * Get downvote
+     * Get downvotes.
      *
      * @return integer
      */
@@ -232,7 +231,7 @@ class Fortune
     }
 
     /**
-     * Downvote
+     * Downvote.
      *
      * @return Fortune
      */
@@ -244,7 +243,7 @@ class Fortune
     }
 
     /**
-     * Get comments
+     * Get comments.
      *
      * @return Comment
      */
@@ -254,7 +253,7 @@ class Fortune
     }
 
     /**
-     * Set published state
+     * Set published state.
      *
      * @return Fortune
      */
@@ -264,6 +263,4 @@ class Fortune
 
         return $this;
     }
-
 }
-

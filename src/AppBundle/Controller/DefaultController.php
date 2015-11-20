@@ -11,8 +11,6 @@ use AppBundle\Entity\Comment;
 use AppBundle\Form\CommentType;
 use Pagerfanta\Pagerfanta;
 
-// {{ pagerfanta(my_pager, bootstrap) }}
-
 class DefaultController extends Controller
 {
     /**
@@ -32,14 +30,38 @@ class DefaultController extends Controller
     }
 
     /**
+     * No route needed, displayed on every page.
+     */
+    public function headerAction()
+    {
+        $nbUnpublishedEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->countUnpublished();
+
+        return $this->render('default/_header.html.twig', array(
+            'nbUnpublishedEntities' => $nbUnpublishedEntities,
+        ));
+    }
+
+    /**
+     * No route needed, displayed on every page.
+     */
+    public function showBestRatedAction()
+    {
+        $bestEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findBestRated(3);
+
+        return $this->render('default/_showBestRated.html.twig', array(
+            'bestEntities' => $bestEntities,
+        ));
+    }
+
+    /**
      * @Route("/upvote/{id}", name="upvote")
      */
     public function upVoteAction($id)
     {
         $entity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
 
-        if ($entity === null) {
-            throw $this->createNotFoundException();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Fortune.');
         }
 
         if ($this->get('session')->has('upvotedId_'.$id)) {
@@ -61,8 +83,8 @@ class DefaultController extends Controller
     {
         $entity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
 
-        if ($entity === null) {
-            throw $this->createNotFoundException();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Fortune.');
         }
 
         if ($this->get('session')->has('downvotedId_'.$id)) {
@@ -77,17 +99,6 @@ class DefaultController extends Controller
         return $this->redirectToRoute('homepage');
     }
 
-    /**
-     * No route needed, displayed on every page.
-     */
-    public function showBestRatedAction()
-    {
-        $bestEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findBestRated(3);
-
-        return $this->render('default/_showBestRated.html.twig', array(
-            'bestEntities' => $bestEntities,
-        ));
-    }
 
     /**
      * @Route("/by_author/{author}", name="byAuthor")
@@ -96,15 +107,16 @@ class DefaultController extends Controller
     {
         $authorEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->findByAuthor($author);
 
+        if (!$authorEntities) {
+            throw $this->createNotFoundException('Unable to find author.');
+        }
+
         return $this->render('default/showByAuthor.html.twig', array(
             'authorEntities' => $authorEntities,
         ));
     }
 
     /**
-     * Displays create form.
-     * Creates a new Fortune entity.
-     *
      * @Route("/new", name="createFortune")
      */
     public function createAction(Request $request)
@@ -128,9 +140,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays edit form.
-     * Edits a Fortune entity.
-     *
      * @Route("/fortune/{id}/edit", name="editFortune")
      */
     public function editAction($id, Request $request)
@@ -167,8 +176,8 @@ class DefaultController extends Controller
     {
         $uniqueEntity = $this->getDoctrine()->getRepository('AppBundle:Fortune')->find($id);
 
-        if ($uniqueEntity === null) {
-            throw $this->createNotFoundException();
+        if (!$uniqueEntity) {
+            throw $this->createNotFoundException('Unable to find Fortune.');
         }
 
         $form = $this->createForm(new CommentType, new Comment);
@@ -200,18 +209,6 @@ class DefaultController extends Controller
 
         return $this->render('default/moderate.html.twig', array(
             'unpublishedEntities' => $unpublishedEntities,
-        ));
-    }
-
-    /**
-     * No route needed, displayed on every page.
-     */
-    public function headerAction()
-    {
-        $nbUnpublishedEntities = $this->getDoctrine()->getRepository('AppBundle:Fortune')->countUnpublished();
-
-        return $this->render('default/_header.html.twig', array(
-            'nbUnpublishedEntities' => $nbUnpublishedEntities,
         ));
     }
 
@@ -250,4 +247,3 @@ class DefaultController extends Controller
         return $this->redirectToRoute('moderate');
     }
 }
-

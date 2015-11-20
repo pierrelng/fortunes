@@ -17,6 +17,8 @@ class FortuneType extends AbstractType
     }
 
     /**
+     * Fortune creation form.
+     * 
      * @param FormBuilderInterface $builder
      * @param array $options
      */

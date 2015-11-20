@@ -43,6 +43,8 @@ class Comment
     private $createdAt;
 
     /**
+     * @var \Fortune
+     * 
      * @ORM\ManyToOne(targetEntity="Fortune", inversedBy="comments")
      */
     private $fortune;
@@ -50,7 +52,6 @@ class Comment
     /**
      * Setting default values.
      *
-     * @return integer
      */
     public function __construct()
     {
@@ -58,7 +59,7 @@ class Comment
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
@@ -68,7 +69,7 @@ class Comment
     }
 
     /**
-     * Set author
+     * Set author.
      *
      * @param string $author
      *
@@ -82,7 +83,7 @@ class Comment
     }
 
     /**
-     * Get author
+     * Get author.
      *
      * @return string
      */
@@ -92,7 +93,7 @@ class Comment
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $content
      *
@@ -106,7 +107,7 @@ class Comment
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -116,7 +117,7 @@ class Comment
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
      *
@@ -130,7 +131,7 @@ class Comment
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -140,7 +141,7 @@ class Comment
     }
 
     /**
-    * Set fortune
+    * Set fortune.
     *
     * @param integer $fortune
     *
@@ -154,7 +155,7 @@ class Comment
    }
 
    /**
-    * Get fortune
+    * Get fortune.
     *
     * @return integer
     */
@@ -163,4 +164,3 @@ class Comment
        return $this->fortune;
    }
 }
-

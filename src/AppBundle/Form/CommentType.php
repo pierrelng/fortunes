@@ -17,6 +17,8 @@ class CommentType extends AbstractType
     }
 
     /**
+     * Comment creation form.
+     * 
      * @param FormBuilderInterface $builder
      * @param array $options
      */
